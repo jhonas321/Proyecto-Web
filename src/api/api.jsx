@@ -264,3 +264,17 @@ export const putApi = async (route, productId, formData) => {
     throw error;
   }
 };
+
+export const boletaPDF = async () => {
+  try {
+    const a = document.createElement('a');
+    //a.href = `${import.meta.env.VITE_BACKEND_PRODUCT}/generarBoleta`;
+    a.href = 'http://localhost:8000/api/generar-boleta';
+    a.target = '_blank';
+    a.download = 'boleta.pdf';
+    a.click();
+  } catch (error) {
+    console.error("Error al visualizar el pdf", error);
+    throw error;
+  }
+};

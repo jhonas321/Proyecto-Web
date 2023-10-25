@@ -3,6 +3,7 @@ import { Admin } from "../../../components/layout/admin/Admin";
 import { Button, Grid, Typography } from "@mui/material";
 import { containerChartStyles } from "../Home/utils/HomeStyles";
 import Table_User from "../../../hooks/Table/Table_User";
+import { boletaPDF } from "../../../api/api"
 
 import { Link } from "react-router-dom";
 import { getApiFrente } from "../../../api/api";
@@ -41,6 +42,13 @@ const Page_Eleccion = () => {
     setSelectedProduct(product);
   };
 
+  const handleViewPDF = (e) => {
+    e.preventDefault();
+    boletaPDF().then(response=>{
+      console.log('ok')
+    });
+  }
+
   return (
     <Admin>
       <Grid container spacing={2}>
@@ -72,6 +80,14 @@ const Page_Eleccion = () => {
                         Nuevo
                       </Button>
                     </Link>
+                    <Button
+                        variant="contained"
+                        color="success"
+                        onClick={e=>handleViewPDF(e)}
+                        sx={{ borderRadius: 3, marginTop: 2, marginRight: 1 }}
+                      >
+                        Ver en PDF
+                      </Button>
                   </Grid>
                 </Grid>
               </div>
